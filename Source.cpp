@@ -22,4 +22,47 @@ void menu() {
 	cout << "9. Tinh tong tien" << endl;
 	cout << "Nhan -99 de thoat." << endl;
 }
+void themHoaDon(DSHoaDon &dshd, HoaDon hd) {
+	if (dshd.SoLuong == Max) {
+		cout << "Danh sach day." << endl;
+		return;
+	}
+
+	int vitri;
+	cout << "Nhap vi tri trong danh sach ma ban muon them hoa don: ";
+	cin >> vitri;
+
+	cout << "\n Hoa don da duoc them thanh cong"<<endl;
+
+	if (vitri < 0 || vitri > dshd.SoLuong) 
+	{
+		cout << "Vi tri" << vitri << "khong hop le." << endl;
+		return;
+	}
+
+	if (dshd.SoLuong > 0) {
+		for (int i = dshd.SoLuong; i > vitri; i--) 
+		{
+			dshd.dshd[i] = dshd.dshd[i - 1];
+		}
+	}
+
+	dshd.dshd[vitri] = hd;
+	dshd.SoLuong += 1;
+}
+
+void xuatDSHoaDon(DSHoaDon dshd) {
+	
+	cout << "\nMa Hoa Don: "  "\t" "Ngay: "  "\t" "Thang: " << "\t" "Nam: " "\t" "Tong tien: " << endl;
+	for (int i = 0; i < dshd.SoLuong; i++)
+	{
+		cout << endl;
+		cout <<dshd.dshd[i].MaHD;
+		cout << "\t\t" << dshd.dshd[i].NgayLap.Ngay;
+		cout << "\t" << dshd.dshd[i].NgayLap.Thang;
+		cout << "\t" << dshd.dshd[i].NgayLap.Nam;
+		cout << "\t" << dshd.dshd[i].TongTien;
+	}
+		
+}
 
